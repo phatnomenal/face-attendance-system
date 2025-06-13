@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="main-grid">
+            <div class="left">
+                <div class="card blue">
+                    <form action="/add" method="post">
+                        <input type="text" name="name" placeholder="Enter name" required>
+                        <button class="darkblue" type="submit">Add Person</button>
+                    </form>
+                </div>
+
+                <div class="card green">
+                    <form action="/fix" method="post">
+                        <input type="text" name="old_name" placeholder="Enter name" required>
+                        <input type="text" name="new_name" placeholder="New name" required>
+                        <button class="orange" type="submit">Fix Name</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="card beige">
+                    <h2>Registered People</h2>
+                    <ul>
+                        {% for person in people %}
+                            <li>{{ person.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="card red">
+                <form action="/erase" method="post">
+                    <input type="text" name="name" placeholder="Enter name to delete" required>
+                    <button class="red" type="submit">Erase Person</button>
+                </form>
+            </div>
+
+        <div class="bottom-buttons">
+            <form action="/attendance" method="get"><button class="blue" type="submit">Attendance Check</button></form>
+            <a href="/report/daily" class="green">Daily Report</a>
+            <a href="/report/monthly" class="purple">Monthly Report</a>
+        </div>
+    </div>
+</body>
+</html>
