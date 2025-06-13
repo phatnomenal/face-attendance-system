@@ -22,16 +22,27 @@ This project is a **Python + OpenCV + Flask**–based face attendance system opt
 ## Project Structure# face-attendance-system
 face-attendance-system/
 ├── app.py # Flask web app
+
 ├── test_faces_full_workflow.py # Core face recognition logic (Raspberry Pi optimized)
+
 ├── utils.py # Helper functions (report generation, label handling)
+
 ├── faces/ # Collected face images
+
 ├── labels.csv # Label-to-name mappings
+
 ├── detections.csv # Attendance log
+
 ├── trainer.yml # Trained face recognizer model
+
 ├── templates/
+
 │ └── index.html # Main UI
+
 ├── static/
+
 │ └── styles.css # Simple CSS
+
 └── README.md # (This file)
 
 
